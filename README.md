@@ -37,8 +37,8 @@ Open Dockerfile
 <br>
 
 ### Deploy in Azure
-**Note**: Before pushing to Azure App Service, remember to double check the `requirements.txt` file by by typing <br>
-          `pip freeze > requirements.txt` in your work directory terminal where you flask app is (either in local or Docker container) 
+**Note**: Before pushing to Azure App Service, make sure `pyodbc` is in the `requirements.txt` file. You can also type
+          `pip freeze > requirements.txt` in your work directory terminal where you flask app is (either in local or Docker container) to update the `requirements.txt`
   
 [Setup Azure App Service and deploy in Azure App Service]
 
