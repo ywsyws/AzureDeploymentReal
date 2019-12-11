@@ -42,7 +42,6 @@ prompt-toolkit==1.0.15
 pycodestyle==2.5.0
 pycrypto==2.6.1
 Pygments==2.2.0
-pygobject==3.26.1
 pyodbc==4.0.27
 pyparsing==2.4.5
 python-dateutil==2.8.1
