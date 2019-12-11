@@ -8,8 +8,7 @@ To deploy a flask app on Azure cloud.
 
 [Setup Azure App Service]
 
-Before pushing to Azure App Service, remember to:
-1. Double check the requirements.txt file
-2. Add 'Dockerfile' in .gitignore file.
+## Note
+Before pushing to Azure App Service, remember to double check the requirements.txt file:
 
 [Setup Azure App Service]: https://medium.com/@nikovrdoljak/deploy-your-flask-app-on-azure-in-3-easy-steps-b2fe388a589e
