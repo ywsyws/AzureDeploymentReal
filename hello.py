@@ -7,7 +7,7 @@ from flask import Flask
 from flask import render_template
 from flask import Response
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
+from wtforms import IntegerField, StringField, SubmitField
 from wtforms.validators import InputRequired
 from flask_bootstrap import Bootstrap
 from graph import create_figure
@@ -67,18 +67,26 @@ def graph():
     return render_template("hello.html", Test="Channing!")
 
 class NameForm(FlaskForm):
-    name = StringField('name', validators=[InputRequired()])
+    user_id = IntegerField('User ID', validators=[InputRequired()])
+    movie_id = IntegerField('Movie ID', validators=[InputRequired()])
+    comment = StringField('Tell me how you feel about this movie', validators=[InputRequired()])
     submit = SubmitField('Submit')
 
 
 @app.route('/comment', methods=['GET', 'POST'])
 def comment():
-    name = None
+    user_id = None
+    movie_id = None
+    comment = None
     form = NameForm()
     if form.validate_on_submit():
-        name = form.name.data
-        form.name.data = ''
-    return render_template('comment.html', form=form, name=name)
+        user_id = form.user_id.data
+        movie_id = form.movie_id.data
+        comment = form.comment.data
+        form.user_id.data = ''
+        form.movie_id.data = ''
+        form.comment.data = ''
+    return render_template('comment.html', form=form, user_id=user_id,movie_id=movie_id, comment=comment, name='Channing!')
 
 
 if __name__ == '__main__':
