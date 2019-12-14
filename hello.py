@@ -8,12 +8,14 @@ from flask import Response
 from flask_wtf import FlaskForm
 from wtforms import StringField
 from wtforms.validators import InputRequired
+from flask_bootstrap import Bootstrap
 from graph import create_figure
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 
 # Create an instance of the Flask class
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'hard to guess string'
+bootstrop = Bootstrap(app)
 
 # Homepage of the web app
 @app.route('/')
