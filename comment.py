@@ -1,6 +1,5 @@
 # import libraries
-from functions import parse_url, sqldb_conn, query
-import config
+import pyodbc
 
 def write_sql(user_id, movie_id, comment):
     # Set URL
