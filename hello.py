@@ -9,7 +9,7 @@ from flask import Response
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import InputRequired
-# from flask_bootstrap import Bootstrap
+from flask_bootstrap import Bootstrap
 from graph import create_figure
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 
