@@ -86,7 +86,7 @@ def comment():
         form.user_id.data = None
         form.movie_id.data = None
         form.comment.data = ''
-    return render_template('comment.html', form=form, user_id=user_id,movie_id=movie_id, comment=comment, name='Channing!')
+    return render_template('comment.html', form=form, name='Channing!')
 
 
 if __name__ == '__main__':
