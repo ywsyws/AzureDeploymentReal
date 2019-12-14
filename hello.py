@@ -2,20 +2,21 @@
 import io
 import pandas as pd
 import pyodbc
+import sys
 from flask import Flask
 from flask import render_template
 from flask import Response
 from flask_wtf import FlaskForm
-from wtforms import StringField
+from wtforms import StringField, SubmitField
 from wtforms.validators import InputRequired
-from flask_bootstrap import Bootstrap
+# from flask_bootstrap import Bootstrap
 from graph import create_figure
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 
 # Create an instance of the Flask class
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'hard to guess string'
-bootstrop = Bootstrap(app)
+# bootstrap = Bootstrap(app)
 
 # Homepage of the web app
 @app.route('/')
@@ -67,16 +68,17 @@ def graph():
 
 class NameForm(FlaskForm):
     name = StringField('name', validators=[InputRequired()])
+    submit = SubmitField('Submit')
 
 
-@app.route('/comment', methods=('GET', 'POST'))
+@app.route('/comment', methods=['GET', 'POST'])
 def comment():
     name = None
     form = NameForm()
     if form.validate_on_submit():
         name = form.name.data
         form.name.data = ''
-    return render_template('comment.html', form=form)
+    return render_template('comment.html', form=form, name=name)
 
 
 if __name__ == '__main__':
