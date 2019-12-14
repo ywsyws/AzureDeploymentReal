@@ -83,10 +83,9 @@ def comment():
         user_id = form.user_id.data
         movie_id = form.movie_id.data
         comment = form.comment.data
-        form.user_id.data = 0
-        form.movie_id.data = 0
-        form.comment.data = ''
-    return render_template('comment.html', form=form, name='Channing!')
+        form = NameForm(formdata=None)
+        movie_id = form.movie_id.data
+    return render_template('comment.html', form=form, user_id=user_id, movie_id=movie_id, comment=comment, name='Channing!')
 
 
 if __name__ == '__main__':
