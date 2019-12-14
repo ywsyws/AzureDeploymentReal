@@ -16,7 +16,7 @@ from matplotlib.backends.backend_agg import FigureCanvasAgg
 # Create an instance of the Flask class
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'hard to guess string'
-# bootstrap = Bootstrap(app)
+bootstrap = Bootstrap(app)
 
 # Homepage of the web app
 @app.route('/')
