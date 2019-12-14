@@ -83,8 +83,8 @@ def comment():
         user_id = form.user_id.data
         movie_id = form.movie_id.data
         comment = form.comment.data
-        form.user_id.data = ' '
-        form.movie_id.data = ' '
+        form.user_id.data = 0
+        form.movie_id.data = 0
         form.comment.data = ''
     return render_template('comment.html', form=form, name='Channing!')
 
