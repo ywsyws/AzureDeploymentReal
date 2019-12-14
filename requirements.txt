@@ -1,6 +1,7 @@
 Click==7.0
 cycler==0.10.0
 Flask==1.1.1
+Flask-WTF
 itsdangerous==1.1.0
 Jinja2==2.10.3
 kiwisolver==1.1.0
@@ -13,3 +14,4 @@ python-dateutil==2.8.1
 pyodbc
 six==1.13.0
 Werkzeug==0.16.0
+https://github.com/lepture/flask-wtf/tarball/master
