@@ -20,7 +20,7 @@ bootstrap = Bootstrap(app)
 def index():
     return render_template('home.html', name='Channing!')
 
-# Hello page to show the graph using the result of a SQL query
+# Hello page to plot the graph using the result of a SQL query
 @app.route('/plot.png')
 def plot():
     """ SQL query and plot graph
@@ -55,6 +55,7 @@ def plot():
 def graph():
     return render_template("hello.html", Test="Channing!")
 
+
 class NameForm(FlaskForm):
     user_id = IntegerField('User ID', validators=[InputRequired()])
     movie_id = IntegerField('Movie ID', validators=[InputRequired()])
@@ -72,13 +73,11 @@ def comment():
         user_id = form.user_id.data
         movie_id = form.movie_id.data
         comment = form.comment.data
-
-
         write_to_sql(user_id, movie_id, comment)
-        
         form = NameForm(formdata=None)
         movie_id = form.movie_id.data
-    return render_template('comment.html', form=form, user_id=user_id, movie_id=movie_id, comment=comment, name='Channing!')
+    return render_template('comment.html', form=form, user_id=user_id, movie_id=movie_id, comment=comment, \
+                            name='Channing!')
 
 
 if __name__ == '__main__':
