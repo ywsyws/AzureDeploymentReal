@@ -77,10 +77,9 @@ def comment():
 
         # Connect to the Azure SQL database
         driver, server, db, uid, pwd = configuration()
-        conn, cursor = sqldb_conn(driver, server, db, uid, pwd)
-        query = write_query()
-        write_to_sql(query, user_id, movie_id, comment)
 
+        write_sql(query, user_id, movie_id, comment)
+        
         form = NameForm(formdata=None)
         movie_id = form.movie_id.data
     return render_template('comment.html', form=form, user_id=user_id, movie_id=movie_id, comment=comment, name='Channing!')

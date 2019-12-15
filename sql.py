@@ -46,6 +46,8 @@ def fetch_query():
 
 def write_to_sql(query, user_id, movie_id, comment):
 
+    conn, cursor = sqldb_conn(driver, server, db, uid, pwd)
+    query = write_query()
     # Execute the query and write to Azure DB table
     cursor.execute(query, user_id, movie_id, comment)
 
