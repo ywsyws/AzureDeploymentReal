@@ -43,3 +43,16 @@ def fetch_query():
             GROUP BY year
             """
     return query
+
+def write_to_sql(query, user_id, movie_id, comment):
+
+    # Execute the query and write to Azure DB table
+    cursor.execute(query, user_id, movie_id, comment)
+
+    # Commit the connection since it is not autocimmited by default
+    conn.commit()
+
+    # Close the connection
+    conn.close()
+    
+    return

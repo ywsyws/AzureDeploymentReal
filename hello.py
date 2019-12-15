@@ -9,8 +9,8 @@ from wtforms.validators import InputRequired
 from flask_bootstrap import Bootstrap
 from graph import create_figure
 from matplotlib.backends.backend_agg import FigureCanvasAgg
-from comment import write_sql
-from sql import configuration, sqldb_conn, write_query, fetch_query
+# from comment import write_sql
+from sql import configuration, sqldb_conn, write_query, fetch_query, write_to_sql
 
 # Create an instance of the Flask class
 app = Flask(__name__)
@@ -74,7 +74,13 @@ def comment():
         user_id = form.user_id.data
         movie_id = form.movie_id.data
         comment = form.comment.data
-        write_sql(user_id, movie_id, comment)
+
+        # Connect to the Azure SQL database
+        driver, server, db, uid, pwd = configuration()
+        conn, cursor = sqldb_conn(driver, server, db, uid, pwd)
+        query = write_query()
+        write_sql(query, user_id, movie_id, comment)
+        
         form = NameForm(formdata=None)
         movie_id = form.movie_id.data
     return render_template('comment.html', form=form, user_id=user_id, movie_id=movie_id, comment=comment, name='Channing!')
