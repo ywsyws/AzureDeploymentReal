@@ -1,6 +1,6 @@
 from urllib import parse
 import pyodbc
-
+import config
 
 def parse_url(url):
     """ Parce URL into dictionary for INPUT to Azure SQL server
@@ -11,9 +11,15 @@ def parse_url(url):
     return url_query
 
 
-def sqldb_conn(driver, server, db, uid, pwd):
+def sqldb_conn():
     """ Establish connection with the Azure SQL database
     """
+
+    driver = config.DRIVER
+    server = config.SERVER
+    db = config.DB
+    uid = config.UID
+    pwd= config.PWD
 
     # Connect to the Azure SQL Database
     conn = pyodbc.connect(

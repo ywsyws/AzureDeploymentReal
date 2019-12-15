@@ -10,7 +10,6 @@ from flask_bootstrap import Bootstrap
 from graph import create_figure
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 from comment import write_sql
-import config
 from sql import parse_url, sqldb_conn, query
 
 # Create an instance of the Flask class
@@ -37,13 +36,7 @@ def plot():
     """
 
     # Connect to the Azure SQL database
-    # Connect to the Azure SQL database
-    driver = config.DRIVER
-    server = config.SERVER
-    db = config.DB
-    uid = config.UID
-    pwd= config.PWD
-    conn, cursor = sqldb_conn(driver, server, db, uid, pwd)
+    conn, cursor = sqldb_conn()
     
     # Making the SQL query
     query = """SELECT year, COUNT(year) AS count
