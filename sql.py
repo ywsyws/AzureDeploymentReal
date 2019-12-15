@@ -34,6 +34,7 @@ def write_query():
             INSERT INTO cc_comments (user_id, movie_id, comment)
             VALUES (?, ?, ?)
             """
+    return query
             
 def fetch_query():
     """ Define query to get analysis_movies data
