@@ -44,7 +44,7 @@ def fetch_query():
             """
     return query
 
-def write_to_sql(query, user_id, movie_id, comment):
+def write_to_sql(user_id, movie_id, comment):
 
     conn, cursor = sqldb_conn(driver, server, db, uid, pwd)
     query = write_query()
