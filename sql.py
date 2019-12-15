@@ -2,7 +2,7 @@ import pyodbc
 import config
 
 def configuration():
-    """ Get the configurationi information
+    """ Get the configuration information
     """
     
     driver = config.DRIVER
@@ -15,6 +15,10 @@ def configuration():
 
 def sqldb_conn(driver, server, db, uid, pwd):
     """ Establish connection with the Azure SQL database
+
+    Using the connect function of pyodbc to connect 
+    to the Azure SQL Database and
+    create connection and cursor instances.
     """
 
     # Connect to the Azure SQL Database
@@ -45,8 +49,17 @@ def fetch_query():
     return query
 
 def write_to_sql(user_id, movie_id, comment):
+    """ Write users' movie comments into the comments database
+
+    Connect to the Azure SQL Database and 
+    write to the Azure SQL database.
+    """
+
+    # Get Azure SQL database login configuration
     driver, server, db, uid, pwd = configuration()
+    # Get connection and cursor instances
     conn, cursor = sqldb_conn(driver, server, db, uid, pwd)
+    # Making the SQL INSERT query
     query = write_query()
     # Execute the query and write to Azure DB table
     cursor.execute(query, user_id, movie_id, comment)

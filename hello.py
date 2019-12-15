@@ -25,11 +25,8 @@ def index():
 def plot():
     """ SQL query and plot graph
 
-    Using the connect function of pyodbc to connect to 
-    the Azure SQL Database and
-    making a query.
-
-    Then using the query result to plot a graph.
+    Connect to the Azure SQL Database and making a query.
+    Then use the query result to plot a graph.
     This graph will be used by the hello.html.
     """
 
@@ -57,27 +54,45 @@ def graph():
 
 
 class NameForm(FlaskForm):
+    """ Define the list of fields in the form
+    """
+
+    # 3 compulsory input fields in the form
     user_id = IntegerField('User ID', validators=[InputRequired()])
     movie_id = IntegerField('Movie ID', validators=[InputRequired()])
     comment = StringField('Tell me how you feel about this movie', validators=[InputRequired()])
+    # Submit button in the form
     submit = SubmitField('Submit')
 
-
+# Comment page that lets users to input their movie comments
 @app.route('/comment', methods=['GET', 'POST'])
 def comment():
+
+    """ Get movie comments and input to the database
+
+    Get users' movie comments as inputs.
+    Then insert these inputs into the comments database.
+    """
+
+    # Declare input variables
     user_id = None
     movie_id = None
     comment = None
+
+    # Create a form instance
     form = NameForm()
+
+    # Check inputs validity
     if form.validate_on_submit():
         user_id = form.user_id.data
         movie_id = form.movie_id.data
         comment = form.comment.data
+        # Insert inputs into comments database
         write_to_sql(user_id, movie_id, comment)
+        # Clear form entries
         form = NameForm(formdata=None)
-        movie_id = form.movie_id.data
-    return render_template('comment.html', form=form, user_id=user_id, movie_id=movie_id, comment=comment, \
-                            name='Channing!')
+    return render_template('comment.html', form=form, user_id=user_id, \
+                            movie_id=movie_id, comment=comment, name='Channing!')
 
 
 if __name__ == '__main__':
