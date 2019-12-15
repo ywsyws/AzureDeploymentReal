@@ -76,7 +76,7 @@ def comment():
         comment = form.comment.data
 
         # Connect to the Azure SQL database
-        driver, server, db, uid, pwd = configuration()
+        
 
         write_to_sql(user_id, movie_id, comment)
         
