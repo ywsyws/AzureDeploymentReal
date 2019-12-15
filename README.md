@@ -2,9 +2,14 @@
 
 To deploy a flask app on Azure cloud.
 
-1. Get data through SQL query in Azure SQL database
+Hello page:
+1. Get data through SQL query from Azure SQL database
 2. Plot graph using this data
 3. Show it through Azure App Service.
+
+Comment page:
+1. Get movie comments from users
+2. Write users inputs into the  Comment table of the Azure SQL database
 
 
 ## User Manual
@@ -19,7 +24,7 @@ Open Dockerfile
 1. Type `docker image build -t image_name .` to build the image
 2. Use `docker images` to check if the image is successfully built
 3. To create a container, type the command below and modify accordingly the `-v` tag arguments in the format of `host_path:container_path` <br>
-   `docker container run -it --name container_name -p 5000:5-000 -v ~/workspace/docker:/app -d image_name`
+   `docker container run -it --name container_name -p 5000:5000 -v ~/workspace/docker:/app -d image_name`
 4. You can type `docker ps` to check if the container is successfuly created
 5. Now you are inside the container
 <br>
@@ -37,8 +42,10 @@ Open Dockerfile
 <br>
 
 ### Deploy in Azure
-**Note**: Before pushing to Azure App Service, make sure `pyodbc` is in the `requirements.txt` file. You can also type
-          `pip freeze > requirements.txt` in your work directory terminal where you flask app is (either in local or Docker container) to update the `requirements.txt`
+**Note**: Before pushing to Azure App Service, make sure `pyodbc` is in the 		`requirements.txt` file. You can also type
+>  `pip freeze > requirements.txt` <br>
+
+in your work directory terminal where you flask app is (either in local or Docker container) to update the `requirements.txt`
   
 [Setup Azure App Service and deploy in Azure App Service]
 
