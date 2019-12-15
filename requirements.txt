@@ -3,7 +3,7 @@ cycler==0.10.0
 dominate==2.4.0
 Flask==1.1.1
 Flask-Bootstrap==3.3.7.1
-Flask-WTF==0.15.dev20191214
+Flask-WTF
 Jinja2==2.10.3
 keyring==10.6.0
 keyrings.alt==3.0

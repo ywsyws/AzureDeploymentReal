@@ -11,8 +11,8 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update -y && \
     apt-get install -y python3 python3-pip python3-dev && \
     apt-get install -y git && \
-    apt-get install -y sudo curl && \
-    apt-get install -y jupyter
+    apt-get install -y sudo curl
+    # apt-get install -y jupyter
 
 # Configure git account
 RUN git config --global user.name "ywsyws" && \
