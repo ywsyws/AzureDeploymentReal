@@ -1,4 +1,3 @@
-from urllib import parse
 import pyodbc
 import config
 

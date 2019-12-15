@@ -1,7 +1,6 @@
 # import libraries
 import io
 import pandas as pd
-import pyodbc
 from flask import Flask, render_template, Response
 from flask_wtf import FlaskForm
 from wtforms import IntegerField, StringField, SubmitField
@@ -9,8 +8,7 @@ from wtforms.validators import InputRequired
 from flask_bootstrap import Bootstrap
 from graph import create_figure
 from matplotlib.backends.backend_agg import FigureCanvasAgg
-# from comment import write_sql
-from sql import configuration, sqldb_conn, write_query, fetch_query, write_to_sql
+from sql import configuration, sqldb_conn, fetch_query, write_to_sql
 
 # Create an instance of the Flask class
 app = Flask(__name__)
@@ -75,8 +73,6 @@ def comment():
         movie_id = form.movie_id.data
         comment = form.comment.data
 
-        # Connect to the Azure SQL database
-        
 
         write_to_sql(user_id, movie_id, comment)
         
