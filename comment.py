@@ -2,9 +2,6 @@
 import pyodbc
 
 def write_sql(user_id, movie_id, comment):
-    # Set URL
-    # url = 'https://www.yws.com?user_id=11&movie_id=111&comment=asdf'
-    # url_query = parse_url(url)
 
     # Connect to the Azure SQL database
     conn = pyodbc.connect(

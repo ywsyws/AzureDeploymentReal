@@ -1,0 +1,5 @@
+DRIVER = '{ODBC Driver 17 for SQL Server}'
+SERVER = 'azuresqlorange.database.windows.net'
+DB = 'orange_azure'
+UID = 'orange'
+PWD = 'Supermotdepasse!42'

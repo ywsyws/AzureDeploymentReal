@@ -16,3 +16,14 @@ pyodbc
 six==1.13.0
 Werkzeug==0.16.0
 https://github.com/lepture/flask-wtf/tarball/master
+
+
+
+    conn = pyodbc.connect(
+        'Driver={ODBC Driver 17 for SQL Server};'
+        'Server=azuresqlorange.database.windows.net;'
+        'Database=orange_azure;'
+        'Trusted_Connectoin=yes;'
+        'UID=orange;'
+        'PWD=Supermotdepasse!42;')
+    cursor = conn.cursor()
