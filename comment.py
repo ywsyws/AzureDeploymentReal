@@ -1,17 +1,12 @@
 # import libraries
 import pyodbc
+from sql import configuration, sqldb_conn
 
 def write_sql(user_id, movie_id, comment):
 
     # Connect to the Azure SQL database
-    conn = pyodbc.connect(
-        'Driver={ODBC Driver 17 for SQL Server};'
-        'Server=azuresqlorange.database.windows.net;'
-        'Database=orange_azure;'
-        'Trusted_Connectoin=yes;'
-        'UID=orange;'
-        'PWD=Supermotdepasse!42;')
-    cursor = conn.cursor()
+    driver, server, db, uid, pwd = configuration()
+    conn, cursor = sqldb_conn(driver, server, db, uid, pwd)
 
     # Execute the query and write to Azure DB table
     query = """
