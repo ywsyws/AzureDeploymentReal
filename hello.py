@@ -10,7 +10,7 @@ from flask_bootstrap import Bootstrap
 from graph import create_figure
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 from comment import write_sql
-from sql import configuration, sqldb_conn, write_query
+from sql import configuration, sqldb_conn, write_query, fetch_query
 
 # Create an instance of the Flask class
 app = Flask(__name__)
@@ -40,10 +40,8 @@ def plot():
     conn, cursor = sqldb_conn(driver, server, db, uid, pwd)
     
     # Making the SQL query
-    query = """SELECT year, COUNT(year) AS count
-            FROM analysis_movies
-            GROUP BY year
-            """
+    query = fetch_query()
+
     # Putting the result in a dataframe
     df = pd.read_sql(query, conn)
 

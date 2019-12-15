@@ -34,4 +34,12 @@ def write_query():
             INSERT INTO cc_comments (user_id, movie_id, comment)
             VALUES (?, ?, ?)
             """
+            
+def fetch_query():
+    """ Define query to get analysis_movies data
+    """
+    query = """SELECT year, COUNT(year) AS count
+            FROM analysis_movies
+            GROUP BY year
+            """
     return query
