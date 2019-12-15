@@ -27,7 +27,7 @@ def sqldb_conn(driver, server, db, uid, pwd):
     return conn, cursor
 
 
-def query():
+def write_query():
     """ Define INSERT query
     """
     query = """

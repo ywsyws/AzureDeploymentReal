@@ -10,7 +10,7 @@ from flask_bootstrap import Bootstrap
 from graph import create_figure
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 from comment import write_sql
-from sql import configuration, sqldb_conn, query
+from sql import configuration, sqldb_conn, write_query
 
 # Create an instance of the Flask class
 app = Flask(__name__)
